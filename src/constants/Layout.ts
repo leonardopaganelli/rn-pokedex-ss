@@ -1,12 +1,18 @@
-import { Dimensions } from 'react-native';
+import { Dimensions, Platform } from "react-native";
 
-const width = Dimensions.get('window').width;
-const height = Dimensions.get('window').height;
+const isMobile = Platform.OS === "android" || Platform.OS === "ios";
+const dimensionProperty = isMobile ? "screen" : "window";
+
+const width = Dimensions.get(dimensionProperty).width;
+const height = Dimensions.get(dimensionProperty).height;
 
 export default {
   window: {
     width,
     height,
   },
-  isSmallDevice: width < 375,
+  isMobile,
+  isSmallDevice: width < 400,
+  isMediumDevice: width < 510,
+  isXSmallDevice: width < 350,
 };
