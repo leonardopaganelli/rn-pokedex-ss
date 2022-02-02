@@ -18,10 +18,14 @@ export default function Header() {
       <View style={[styles.leftSide]}>
         <Text style={[styles.leftText]}>Pokedéx</Text>
         <View style={styles.counterContainer}>
-          <Counter quantity={1} iconType="blank" style={styles.counterMargin} />
           <Counter
-            quantity={2}
+            quantity={107}
             iconType="default"
+            style={styles.counterMargin}
+          />
+          <Counter
+            quantity={200}
+            iconType="blank"
             style={styles.counterMargin}
           />
         </View>
@@ -35,7 +39,7 @@ export default function Header() {
       >
         {!isSmallDevice && <SkewBorder />}
         <View style={[styles.rightSide]}>
-          <Text style={[styles.rightText]}>By Number</Text>
+          <Text style={[styles.rightText]}>{`${width} x ${height}`}</Text>
         </View>
       </View>
     </View>
@@ -65,12 +69,12 @@ const styles = StyleSheet.create({
     color: "#e3e3e3",
   },
   rightSide: {
-    backgroundColor: "#333",
+    backgroundColor: isSmallDevice ? "#333" : "transparent",
     paddingHorizontal: 10,
     paddingVertical: 12,
     alignItems: "center",
     justifyContent: "center",
-    flex: 0.82,
+    flex: isSmallDevice ? 1 : 0.82,
   },
   container: {
     justifyContent: "space-between",
